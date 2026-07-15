@@ -1,0 +1,126 @@
+.footer {
+  position: relative;
+  background-color: #1a0b00;
+  background-image: 
+    linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
+    url('/images/mandvi-landscape.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding-top: 14rem;
+  border-top: 6px solid var(--primary);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.logoSubtitle {
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.aboutText {
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.socials a:hover {
+  background-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.footerHeading {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1.5rem;
+  row-gap: 0.8rem;
+  font-size: 1rem;
+}
+
+.linkList a {
+  color: #e2e8f0;
+  transition: color 0.3s ease;
+}
+
+.linkList a:hover {
+  color: var(--primary);
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contactList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #e2e8f0;
+  font-size: 1rem;
+}
+
+.contactIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.footerBottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #718096;
+  font-size: 0.9rem;
+}

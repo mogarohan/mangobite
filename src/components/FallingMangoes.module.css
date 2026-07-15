@@ -1,0 +1,79 @@
+.mangoContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  perspective: 1000px; /* For 3D effects */
+}
+
+.mango {
+  position: absolute;
+  top: -50px;
+  user-select: none;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0.6;
+  /* Beautiful glowing shadow */
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 10px rgba(192, 57, 43, 0.2));
+  will-change: transform, top;
+}
+
+/* Depth of field effects */
+.depthFar {
+  filter: blur(4px) drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+  opacity: 0.3;
+  z-index: -2;
+}
+
+.depthMid {
+  filter: blur(1px) drop-shadow(0 10px 10px rgba(0,0,0,0.3));
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.depthNear {
+  filter: blur(0px) drop-shadow(0 15px 20px rgba(0,0,0,0.4));
+  opacity: 0.8;
+  z-index: 0;
+}
+
+/* Animation classes to map hashed keyframes properly */
+.animSway {
+  animation-name: fallAndSway;
+}
+
+.animSpin {
+  animation-name: fallAndSpin;
+}
+
+.animStraight {
+  animation-name: fallStraight;
+}
+
+@keyframes fallAndSway {
+  0% { transform: translateY(-50px) rotate(0deg) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  50% { transform: translateY(50vh) rotate(180deg) translateX(40px); }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(105vh) rotate(360deg) translateX(-40px); opacity: 0; }
+}
+
+@keyframes fallAndSpin {
+  0% { transform: translateY(-50px) rotate(0deg) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  50% { transform: translateY(50vh) rotate(-180deg) translateX(-30px); }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(105vh) rotate(-360deg) translateX(30px); opacity: 0; }
+}
+
+@keyframes fallStraight {
+  0% { transform: translateY(-50px) rotate(0deg) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  50% { transform: translateY(50vh) rotate(90deg) translateX(10px); }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(105vh) rotate(180deg) translateX(-10px); opacity: 0; }
+}
