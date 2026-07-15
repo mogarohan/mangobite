@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Coffee, BedDouble } from 'lucide-react';
+import { ArrowRight, MapPin, Coffee, BedDouble, Calendar, Users, PhoneCall } from 'lucide-react';
 import styles from './page.module.css';
 import RoomCard from '@/components/RoomCard';
 
@@ -11,10 +11,8 @@ export default function Home() {
       <section className={styles.hero}>
         <video
           autoPlay
-          loop
           muted
           playsInline
-          poster="/images/drone-shot.jpg"
           className={styles.heroBgImage}
         >
           <source src="/videos/a.mp4" type="video/mp4" />
@@ -62,17 +60,22 @@ export default function Home() {
       </section>
 
       {/* Restaurant Section (Kake Di Hatti Inspired) */}
-      <section className="section">
+      <section className={`section ${styles.restaurantWrapper}`}>
+        {/* Animated Mango Decorations */}
+        <img src="/images/keri.png?v=5" alt="Mango Decoration" className={styles.keriDecoration} />
+        <img src="/images/keri.png?v=5" alt="Mango Decoration 2" className={styles.keriDecoration2} />
+
         <div className={`container ${styles.restaurantSection}`}>
           <div className={styles.restaurantContent}>
-            <h2 className="section-title" style={{ textAlign: 'left', left: '0', transform: 'none' }}>
-              Our Heritage Restaurant
+            <h4 className={styles.sectionEyebrow}>Culinary Excellence</h4>
+            <h2 className="section-title" style={{ textAlign: 'left', left: '0', transform: 'none', marginBottom: '1rem' }}>
+              The Mango Bite Experience
             </h2>
             <p className={styles.descriptionText}>
               Indulge in a culinary journey at our highly rated, pure-vegetarian multi-cuisine restaurant. Inspired by legendary Indian eateries, we offer a vibrant, rich, and modern dining atmosphere. Enjoy our signature dishes surrounded by traditional Kutchi colors and warm hospitality.
             </p>
-            <Link href="/menu" className="btn btn-primary" style={{ marginTop: '1.5rem' }}>
-              View Our Menu
+            <Link href="/menu" className="btn btn-primary" style={{ marginTop: '2rem' }}>
+              Explore Our Menu
             </Link>
           </div>
           <div className={styles.restaurantImageWrapper}>
@@ -82,13 +85,89 @@ export default function Home() {
               fill 
               className={styles.roundedImage}
             />
+            <div className={styles.experienceBadge}>
+              <span className={styles.badgeNumber}>10+</span>
+              <span className={styles.badgeText}>Years of Excellence</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Infinite Scrolling Menu Marquee */}
+      <section className={styles.marqueeSection}>
+        <div className="container" style={{ marginBottom: '2rem' }}>
+          <h2 className="section-title">Our Menu Specialties</h2>
+        </div>
+        <div className={styles.marqueeContainer}>
+          {/* Track 1 */}
+          <div className={styles.marqueeTrack}>
+            <Link href="/menu" className={styles.marqueeItem}>
+              <Image src="/images/menu_indian.jpg" alt="North Indian" fill className={styles.marqueeImage} />
+              <div className={styles.marqueeOverlay}>
+                <h3>North Indian</h3>
+                <p>Rich, buttery, and authentic flavors.</p>
+              </div>
+            </Link>
+            <Link href="/menu" className={styles.marqueeItem}>
+              <Image src="/images/menu_southindian.jpg" alt="South Indian" fill className={styles.marqueeImage} />
+              <div className={styles.marqueeOverlay}>
+                <h3>South Indian</h3>
+                <p>Crispy dosas and authentic chutneys.</p>
+              </div>
+            </Link>
+            <Link href="/menu" className={styles.marqueeItem}>
+              <Image src="/images/menu_chinese.jpg" alt="Chinese" fill className={styles.marqueeImage} />
+              <div className={styles.marqueeOverlay}>
+                <h3>Chinese</h3>
+                <p>Spicy, tangy, and perfectly wok-tossed.</p>
+              </div>
+            </Link>
+            <Link href="/menu" className={styles.marqueeItem}>
+              <Image src="/images/menu_fastfood.jpg" alt="Fast Food" fill className={styles.marqueeImage} />
+              <div className={styles.marqueeOverlay}>
+                <h3>Fast Food</h3>
+                <p>Quick bites to satisfy your cravings.</p>
+              </div>
+            </Link>
+          </div>
+          {/* Track 2 (Duplicate for seamless infinite scroll) */}
+          <div className={styles.marqueeTrack} aria-hidden="true">
+            <Link href="/menu" className={styles.marqueeItem}>
+              <Image src="/images/menu_indian.jpg" alt="North Indian" fill className={styles.marqueeImage} />
+              <div className={styles.marqueeOverlay}>
+                <h3>North Indian</h3>
+                <p>Rich, buttery, and authentic flavors.</p>
+              </div>
+            </Link>
+            <Link href="/menu" className={styles.marqueeItem}>
+              <Image src="/images/menu_southindian.jpg" alt="South Indian" fill className={styles.marqueeImage} />
+              <div className={styles.marqueeOverlay}>
+                <h3>South Indian</h3>
+                <p>Crispy dosas and authentic chutneys.</p>
+              </div>
+            </Link>
+            <Link href="/menu" className={styles.marqueeItem}>
+              <Image src="/images/menu_chinese.jpg" alt="Chinese" fill className={styles.marqueeImage} />
+              <div className={styles.marqueeOverlay}>
+                <h3>Chinese</h3>
+                <p>Spicy, tangy, and perfectly wok-tossed.</p>
+              </div>
+            </Link>
+            <Link href="/menu" className={styles.marqueeItem}>
+              <Image src="/images/menu_fastfood.jpg" alt="Fast Food" fill className={styles.marqueeImage} />
+              <div className={styles.marqueeOverlay}>
+                <h3>Fast Food</h3>
+                <p>Quick bites to satisfy your cravings.</p>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Featured Rooms (Fern Residency Inspired) */}
-      <section className="section bg-light bg-kutchi-pattern">
-        <div className="container">
+      <section className={`section ${styles.roomsSectionWithBg}`}>
+        <div className={styles.roomsSectionOverlay}></div>
+        <div className={`container ${styles.roomsContentContainer}`}>
           <h2 className="section-title">Premium Heritage Rooms</h2>
           <div className={styles.roomsGrid}>
             <RoomCard 

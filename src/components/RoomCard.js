@@ -12,13 +12,14 @@ export default function RoomCard({ title, description, amenities, imageSrc, pric
         ) : (
           <div className={styles.placeholderImage}>Room Image</div>
         )}
+        <div className={styles.priceTag}>{price}</div>
       </div>
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
         
         <div className={styles.amenities}>
-          <h4>Amenities</h4>
+          <h4>Room Amenities</h4>
           <ul>
             {amenities.map((amenity, index) => (
               <li key={index}>
@@ -30,7 +31,7 @@ export default function RoomCard({ title, description, amenities, imageSrc, pric
         </div>
         
         <div className={styles.footer}>
-          <Link href="/contact" className="btn btn-primary">Book Now</Link>
+          <Link href="/contact" className={styles.bookButton}>Check Availability</Link>
         </div>
       </div>
     </div>

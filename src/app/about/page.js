@@ -1,60 +1,100 @@
 import FAQ from '@/components/FAQ';
 import { Star } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'About Us | Mango Bite Hotel & Restaurant',
-  description: 'Learn about Mango Bite Hotel & Restaurant, our highly rated multi-cuisine restaurant, and our proximity to Mandvi Beach.',
+  description: 'Learn about Mango Bite Hotel & Restaurant, our highly rated multi-cuisine restaurant, and our premium heritage rooms in Mandvi, Kutch.',
 };
 
 export default function About() {
   const faqData = [
     {
-      question: "How many types of rooms are available at THE MANGO BITE HOTEL & RESTAURANT in Mandvi Kutch?",
-      answer: "At THE MANGO BITE HOTEL & RESTAURANT, we offer 3 room types tailored to meet the needs of every traveler. Check detailed room features, images, and the latest availability. Each room is designed to make your stay unforgettable."
+      question: "How many types of rooms are available at Mango Bite Hotel & Restaurant?",
+      answer: "We offer 3 premium room types: Deluxe Room, Super Deluxe Room, and Suite Room. Each room is meticulously designed with a blend of modern comfort and traditional Kutchi artistry."
     },
     {
-      question: "How far is THE MANGO BITE HOTEL & RESTAURANT from the city center?",
-      answer: "From City Center its 21.2 kms away."
+      question: "How far is Mango Bite Hotel & Restaurant from the city center?",
+      answer: "We are located in Maska, just 3.4 km from the serene Mandvi Beach, and about 21.2 kms from the Bhuj City Center. It offers a perfect balance of connectivity and peacefulness."
     },
     {
-      question: "What are the customer ratings for THE MANGO BITE HOTEL & RESTAURANT?",
-      answer: "The overall rating for THE MANGO BITE HOTEL & RESTAURANT stands at 4.25 out of 5, as reviewed by 4 guests on MakeMyTrip. You can explore in-depth guest reviews and browse through photos shared by visitors directly on the MakeMyTrip platform."
+      question: "What are the customer ratings for Mango Bite Hotel & Restaurant?",
+      answer: "Our overall rating stands at a proud 4.25 out of 5 on MakeMyTrip. We consistently strive to provide 5-star hospitality to all our guests."
     },
     {
-      question: "What are the Check-In and Check-Out times of THE MANGO BITE HOTEL & RESTAURANT, Mandvi Kutch?",
-      answer: "Check-In Time: 12 PM. Check-Out Time: 12 PM. Early check-ins and late check-outs are subject to availability."
+      question: "What are the Check-In and Check-Out times?",
+      answer: "Check-In Time: 12:00 PM (Noon). Check-Out Time: 12:00 PM (Noon). Early check-ins and late check-outs are subject to availability and prior request."
     }
   ];
 
   return (
-    <div className="container section">
-      <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', paddingBottom: '3rem' }}>
-        <h1 className="section-title">About Mango Bite</h1>
-        <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>
-          Located on the Mandvi Highway in Maska, Gujarat, Mango Bite Hotel & Restaurant is a highly rated, pure-vegetarian property situated about 3.4 km from the serene Mandvi Beach. We pride ourselves on offering an exceptional stay and a popular multi-cuisine dining experience.
-        </p>
-      </div>
+    <>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <Image 
+          src="/images/hotel_hero.jpg" 
+          alt="Mango Bite Hotel Exterior" 
+          fill 
+          className={styles.heroBg}
+        />
+        <div className={styles.heroOverlay}></div>
+        <div className={`container ${styles.heroContent} animate-fade-in-up`}>
+          <h1 className={styles.heroTitle}>Our Heritage Story</h1>
+          <p style={{ fontSize: '1.2rem', fontWeight: '300', opacity: '0.9' }}>
+            Where traditional Kutchi warmth meets world-class modern hospitality.
+          </p>
+        </div>
+      </section>
 
-      {/* Reviews Section */}
-      <div className="section" style={{ backgroundColor: 'var(--surface)', borderRadius: 'var(--radius-lg)', padding: '3rem', marginBottom: '4rem', boxShadow: 'var(--shadow-sm)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Guest Reviews</h2>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', color: '#fbbf24', marginBottom: '0.5rem' }}>
-            <Star fill="currentColor" />
-            <Star fill="currentColor" />
-            <Star fill="currentColor" />
-            <Star fill="currentColor" />
-            <Star fill="currentColor" style={{ clipPath: 'inset(0 75% 0 0)' }} />
+      {/* Story Section */}
+      <section className={styles.storySection}>
+        <div className={`container ${styles.storyGrid}`}>
+          <div className={styles.storyContent}>
+            <h2>Welcome to Mango Bite</h2>
+            <p>
+              Located prominently on the Mandvi Highway in Maska, Gujarat, Mango Bite Hotel & Restaurant is a premium pure-vegetarian property designed for travelers who seek comfort, luxury, and authentic flavors.
+            </p>
+            <p>
+              Just 3.4 km from the serene shores of Mandvi Beach, our property stands as a beacon of hospitality. Whether you are visiting for a peaceful getaway, a family vacation, or a culinary adventure, our dedicated team ensures your experience is nothing short of extraordinary.
+            </p>
+            <Link href="/rooms" className="btn btn-primary" style={{ marginTop: '1rem' }}>
+              Explore Our Rooms
+            </Link>
           </div>
-          <p style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>4.25 / 5 on MakeMyTrip</p>
+          <div className={styles.storyImageWrapper}>
+            <Image 
+              src="/images/mandvi-landscape.jpg" 
+              alt="Beautiful Mandvi Landscape" 
+              fill 
+              className={styles.storyImage}
+            />
+          </div>
+        </div>
+      </section>
+
+      <div className="container">
+        {/* Reviews Section */}
+        <div className={styles.ratingSection}>
+          <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: 'var(--secondary)' }}>Trusted by Travelers</h2>
+          <div className={styles.stars}>
+            <Star fill="currentColor" size={32} />
+            <Star fill="currentColor" size={32} />
+            <Star fill="currentColor" size={32} />
+            <Star fill="currentColor" size={32} />
+            <Star fill="currentColor" size={32} style={{ clipPath: 'inset(0 75% 0 0)' }} />
+          </div>
+          <p className={styles.ratingText}>4.25 / 5 on MakeMyTrip</p>
+          <p style={{ color: 'var(--text-muted)', marginTop: '1rem' }}>Based on verified guest reviews.</p>
+        </div>
+
+        {/* FAQ Section */}
+        <div className={styles.faqSection}>
+          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '3rem' }}>Frequently Asked Questions</h2>
+          <FAQ faqData={faqData} />
         </div>
       </div>
-
-      {/* FAQ Section */}
-      <div className="section">
-        <h2 className="section-title">Questions & Answers</h2>
-        <FAQ faqData={faqData} />
-      </div>
-    </div>
+    </>
   );
 }

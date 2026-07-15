@@ -114,7 +114,7 @@ a {
 /* Decorative Graphics */
 .contact-graphic {
   position: absolute;
-  top: -140px;
+  top: -160px; /* Thoda aur uper (moved up by 20px) */
   left: -10px;
   width: 200px;
   z-index: 10;
@@ -124,7 +124,7 @@ a {
 @media (max-width: 768px) {
   .contact-graphic {
     width: 140px;
-    top: -100px;
+    top: -110px; /* Perfectly balanced position */
     left: 50%;
     transform: translateX(-50%);
   }
@@ -132,6 +132,12 @@ a {
 
 .section {
   padding: 5rem 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0; /* Moves the entire section higher on mobile */
+  }
 }
 
 .section-title {

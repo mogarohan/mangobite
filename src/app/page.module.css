@@ -16,6 +16,17 @@
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  animation: zoomInOnce 20s ease-out forwards;
+}
+
+@keyframes zoomInOnce {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.15);
+  }
 }
 
 .heroOverlay {
@@ -24,11 +35,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker to be more obvious */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Slightly darker to be more obvious */
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   z-index: 10;
-  transform: translateZ(0); /* Forces layer on top of hardware-accelerated video */
+  transform: translateZ(0);
+  /* Forces layer on top of hardware-accelerated video */
 }
 
 .heroContent {
@@ -69,10 +82,6 @@
   align-items: center;
 }
 
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -83,53 +92,170 @@
 }
 
 .featureCard {
-  padding: 2.5rem 2rem;
+  padding: 3rem 2rem;
   text-align: center;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: var(--radius-lg);
+}
+
+.featureCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .featureIcon {
-  color: var(--primary);
+  color: var(--accent);
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover .featureIcon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .featureCard h3 {
   margin-bottom: 1rem;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  color: var(--secondary);
 }
 
 .featureCard p {
   color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.restaurantWrapper {
+  background-color: var(--surface);
+  position: relative;
 }
 
 .restaurantSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 5rem;
   align-items: center;
+}
+
+.sectionEyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .descriptionText {
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.8;
 }
 
 .restaurantImageWrapper {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 500px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
   z-index: 1;
 }
 
 .roundedImage {
   object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.restaurantImageWrapper:hover .roundedImage {
+  transform: scale(1.05);
+}
+
+.experienceBadge {
+  position: absolute;
+  bottom: 30px;
+  left: -30px;
+  background-color: var(--primary);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 4px solid white;
+}
+
+.badgeNumber {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.badgeText {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
+
+/* Rooms Section with Background Theme */
+.roomsSectionWithBg {
+  position: relative;
+  padding: 6rem 0;
+  background-color: var(--background);
+  overflow: hidden;
+}
+
+.roomsSectionWithBg::before,
+.roomsSectionWithBg::after {
+  content: '';
+  position: absolute;
+  bottom: -45px; /* Pushed down slightly more due to scaled up image */
+  width: 900px;
+  height: 900px;
+  background-image: url('/images/back-img.png');
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.roomsSectionWithBg::before {
+  left: -350px; /* Pushed further out for the bigger size */
+  transform: scaleX(-1); /* Inverted for the left side */
+}
+
+.roomsSectionWithBg::after {
+  right: -350px; /* Pushed further out for the bigger size */
+}
+
+/* Glass layer overlay */
+.roomsSectionOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+/* .roomsSectionWithBg::before removed so corner graphic is visible */
+.roomsContentContainer {
+  position: relative;
+  z-index: 3;
 }
 
 .roomsGrid {
@@ -139,7 +265,170 @@
 }
 
 @media (max-width: 900px) {
+  .roomsSectionWithBg::before,
+  .roomsSectionWithBg::after {
+    width: 250px;
+    height: 250px;
+    bottom: auto;
+  }
+  .roomsSectionWithBg::before {
+    top: -50px;
+    left: -100px;
+    transform: scaleX(-1) scaleY(-1); /* Added scaleY(-1) to make it hang upside down from the top */
+  }
+  .roomsSectionWithBg::after {
+    bottom: -50px;
+    right: -100px;
+  }
+}
+
+/* Mango Branch Decoration */
+.keriDecoration {
+  position: absolute;
+  top: 0px; /* Moved down to start exactly at the card border */
+  left: 2%;
+  width: 130px;
+  height: auto;
+  z-index: 20;
+  animation: swing 5s ease-in-out infinite alternate;
+  transform-origin: top center;
+  filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.2));
+  display: block;
+}
+
+.keriDecoration2 {
+  position: absolute;
+  top: 0px; /* Moved down to start exactly at the card border */
+  right: 2%;
+  width: 100px;
+  height: auto;
+  z-index: 20;
+  animation: swing 7s ease-in-out infinite alternate-reverse;
+  transform-origin: top center;
+  filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.2));
+  display: none;
+  /* Hidden on desktop */
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(-3deg);
+  }
+
+  100% {
+    transform: rotate(3deg);
+  }
+}
+
+@media (max-width: 900px) {
   .restaurantSection {
     grid-template-columns: 1fr;
+  }
+
+  .keriDecoration {
+    display: none;
+    /* Hidden on mobile */
+  }
+
+  .keriDecoration2 {
+    display: block;
+    /* Show on mobile */
+    right: 0%;
+    width: 70px;
+    top: 0px; /* Starting exactly at the card border */
+  }
+}
+
+/* Infinite Marquee Styles */
+.marqueeSection {
+  padding: 4rem 0 6rem 0;
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+.marqueeContainer {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 2rem;
+}
+
+.marqueeTrack {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 2rem;
+  animation: scrollX 20s linear infinite;
+}
+
+.marqueeContainer:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+.marqueeItem {
+  display: block;
+  cursor: pointer;
+  width: 320px;
+  height: 420px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid var(--accent);
+}
+
+.marqueeItem:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+.marqueeImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.marqueeItem:hover .marqueeImage {
+  transform: scale(1.1);
+}
+
+.marqueeOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  color: white;
+}
+
+.marqueeOverlay h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.marqueeOverlay p {
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+@keyframes scrollX {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - 2rem));
+  }
+}
+
+@media (max-width: 768px) {
+  .marqueeItem {
+    width: 260px;
+    height: 350px;
   }
 }
